@@ -1671,23 +1671,20 @@ btn_gift.onclick = function(){
 							<span class="saic-error-info saic-error-info-guest">Pilih jumlah tamu</span>
 						</div>
 
+						<div class="saic-wrap-guest" style="display: none;">
+
 						<div class="saic-wrap-submit saic-clearfix">
 							<p class="form-submit">
-                                <input type='button' name='comment_post_ID' value='6854' id='comment_post_ID' />
-<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
-								<input type="hidden" name="commentpress" value="true" />
-								<button type="button" id="btn-kirim-firebase" style="width:100%; padding:10px; background:#5A0000; color:white; border:none; border-radius:5px; cursor:pointer;">Kirim</button>
-							</p>
+							<input type='hidden' name='comment_post_ID' value='6854' id='comment_post_ID' />
+							<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+							<input type="hidden" name="commentpress" value="true" />
+							<button type="button" id="btn-kirim-firebase" style="width:100%; padding:12px; background:#C5A25D; color:white; border:none; border-radius:8px; font-weight:bold; cursor:pointer;">Kirim Pesan</button>
+						</p>
 						</div>
-
 					</form>
-
 				</div>
-
 			</div>
-
 		</div>
-
 		<div id="saic-comment-status-6854" class="saic-comment-status"></div>
 
 		<ul id="saic-container-comment-6854" class="saic-container-comments saic-order-DESC saic-has-42-comments saic-multiple-comments" data-order="DESC"></ul>
@@ -2690,13 +2687,10 @@ function uc_uc_compact_image_theme_elementor_1f0c24c_start(){
 /*! This file is auto-generated */
 const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(window._wpemojiSettings=a,"wpEmojiSettingsSupports"),s=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const a=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===a[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,a){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!a(e,"\ud83e\u1fac8")}return!1}function f(e,t,n,a){let r;const o=(r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),s=(o.textBaseline="top",o.font="600 32px Arial",{});return e.forEach(e=>{s[e]=t(o,e,n,a)}),s}function r(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}a.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),c.toString(),p.toString()].join(",")+"));",a=new Blob([e],{type:"text/javascript"});const r=new Worker(URL.createObjectURL(a),{name:"wpTestEmojiSupports"});return void(r.onmessage=e=>{i(n=e.data),r.terminate(),t(n)})}catch(e){}i(n=f(s,u,c,p))}t(n)}).then(e=>{for(const n in e)a.supports[n]=e[n],a.supports.everything=a.supports.everything&&a.supports[n],"flag"!==n&&(a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&a.supports[n]);var t;a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&!a.supports.flag,a.supports.everything||((t=a.source||{}).concatemoji?r(t.concatemoji):t.wpemoji&&t.twemoji&&(r(t.twemoji),r(t.wpemoji)))});
 //# sourceURL=https://envitto.invisimple.id/wp-includes/js/wp-emoji-loader.min.js
-</script>
-<script type="module">
-  // 1. Import Firebase SDK
+</script><script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-  import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+  import { getDatabase, ref, push, onValue, query, orderByChild } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-  // 2. Konfigurasi Firebase Anda
   const firebaseConfig = {
     apiKey: "AIzaSyAuT-OUzpr1826YiiA0Hd4-tdXQ6Volosk",
     authDomain: "undangan-f8f57.firebaseapp.com",
@@ -2704,45 +2698,62 @@ const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(
     storageBucket: "undangan-f8f57.firebasestorage.app",
     messagingSenderId: "409101695049",
     appId: "1:409101695049:web:93d9674c0f32445b17a798",
-    databaseURL: "https://undangan-f8f57-default-rtdb.firebaseio.com" // Sesuaikan jika berbeda di console
+    databaseURL: "https://undangan-f8f57-default-rtdb.firebaseio.com"
   };
 
-  // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const db = getDatabase(app);
+  const dbRef = ref(db, 'ucapan_tamu');
 
-  // 3. Fungsi Menangkap Klik Tombol Kirim
-  document.addEventListener('click', function (e) {
-    // Mencari tombol kirim berdasarkan ID yang Anda temukan tadi
-    if (e.target && e.target.id === 'submit-6854') {
-      e.preventDefault(); // Menghentikan sistem vendor yang error
+  // --- 1. FUNGSI KIRIM DATA ---
+  document.getElementById('btn-kirim-firebase').addEventListener('click', function() {
+    const nama = document.querySelector('[name="author"]')?.value;
+    const pesan = document.querySelector('[name="comment"]')?.value;
+    const jumlah = document.querySelector('[name="guest"]')?.value || "1";
 
-      // Ambil data dari elemen yang Anda temukan
-      const namaTamu = document.querySelector('input[name="author"]')?.value || "Anonim";
-      const isiUcapan = document.querySelector('textarea[name="comment"]')?.value || "";
-      const jumlahTamu = document.getElementById('guest')?.value || "1";
+    if (!nama || !pesan) {
+      alert("Mohon isi Nama dan Pesan Anda");
+      return;
+    }
+
+    push(dbRef, {
+      nama: nama,
+      pesan: pesan,
+      jumlah: jumlah,
+      timestamp: Date.now()
+    }).then(() => {
+      alert("Ucapan berhasil terkirim!");
+      document.querySelector('[name="comment"]').value = "";
+    });
+  });
+
+  // --- 2. FUNGSI TAMPILKAN DATA (LOADER) ---
+  // Script ini akan otomatis mengisi <div class="saic-holder-6854">
+  onValue(dbRef, (snapshot) => {
+    const container = document.querySelector('.saic-holder-6854');
+    if (!container) return;
+    
+    container.innerHTML = ""; // Bersihkan kontainer
+    const data = snapshot.val();
+    
+    if (data) {
+      // Ubah objek ke array dan urutkan dari yang terbaru
+      const entries = Object.values(data).reverse(); 
       
-      // Validasi sederhana
-      if (namaTamu === "Anonim" || isiUcapan === "") {
-        alert("Mohon isi nama dan ucapan doa Anda.");
-        return;
-      }
-
-      // 4. Kirim ke Realtime Database
-      push(ref(db, 'rsvp_ucapan'), {
-        nama: namaTamu,
-        ucapan: isiUcapan,
-        jumlah_orang: jumlahTamu,
-        waktu: new Date().toLocaleString('id-ID')
-      })
-      .then(() => {
-        alert("Terima kasih! Ucapan Anda sudah tersimpan.");
-        // Reset form agar terlihat sudah terkirim
-        document.querySelector('textarea[name="comment"]').value = "";
-      })
-      .catch((error) => {
-        alert("Gagal mengirim ke database: " + error.message);
+      entries.forEach(item => {
+        const card = document.createElement('div');
+        card.style = "background: #f9f9f9; padding: 15px; border-radius: 10px; margin-bottom: 15px; border-left: 5px solid #C5A25D; text-align: left;";
+        card.innerHTML = `
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <strong style="color: #333; font-size: 1.1em;">${item.nama}</strong>
+            <span style="font-size: 0.8em; color: #777;">${item.jumlah} Orang</span>
+          </div>
+          <p style="margin: 8px 0 0; color: #555; line-height: 1.5;">${item.pesan}</p>
+        `;
+        container.appendChild(card);
       });
+    } else {
+      container.innerHTML = "<p style='text-align:center; color:#999;'>Belum ada ucapan.</p>";
     }
   });
 </script>
