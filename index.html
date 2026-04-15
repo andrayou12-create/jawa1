@@ -194,32 +194,23 @@ var aagb_local_object = {"ajax_url":"https://envitto.invisimple.id/wp-admin/admi
 					}
 				}
 			</style>
-			<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-T4B3LZ2');</script>
-<!-- End Google Tag Manager --><script>document.addEventListener('DOMContentLoaded', function() {
+			<script>
+document.addEventListener('DOMContentLoaded', function() {
     const textareas = document.querySelectorAll('.custom-textarea-jfb');
-
-    // Tangkap semua form di halaman
     const forms = document.querySelectorAll('form');
-
     forms.forEach(function(form) {
         form.addEventListener('submit', function(event) {
             textareas.forEach(function(textarea) {
                 const originalValue = textarea.value;
                 textarea.value = originalValue.replace(/\n/g, '<br>');
-
-                // Kembalikan nilai asli setelah submit
                 setTimeout(function() {
                     textarea.value = originalValue;
                 }, 0);
             });
         });
     });
-});</script><link rel="icon" href="https://raw.githubusercontent.com/andrayou12-create/bernaungid1/main/assets.bernaung.id/loading-bernaung.jpeg" sizes="32x32" />
+});
+</script><link rel="icon" href="https://raw.githubusercontent.com/andrayou12-create/bernaungid1/main/assets.bernaung.id/loading-bernaung.jpeg" sizes="32x32" />
 <link rel="icon" href="https://raw.githubusercontent.com/andrayou12-create/bernaungid1/main/assets.bernaung.id/loading-bernaung.jpeg" sizes="192x192" />
 <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/andrayou12-create/bernaungid1/main/assets.bernaung.id/loading-bernaung.jpeg" />
 <meta name="msapplication-TileImage" content="https://raw.githubusercontent.com/andrayou12-create/bernaungid1/main/assets.bernaung.id/loading-bernaung.jpeg" />
