@@ -1599,77 +1599,168 @@ btn_gift.onclick = function(){
 				</div>
 				<div class="elementor-element elementor-element-9a74557 inv-zoom-out elementor-invisible elementor-widget elementor-widget-wds_rsvp" data-id="9a74557" data-element_type="widget" data-e-type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;show_avatar&quot;:&quot;yes&quot;}" data-widget_type="wds_rsvp.default">
 				<div class="elementor-widget-container">
-					<style>
-					    .saic-comment-content { margin-left: 0 !important; }
-					    .saic-comment-avatar { display: none !important; }
-					    /* Menambahkan style agar tombol yang dipilih terlihat berbeda */
-					    .saic-button.active { background-color: #C5A25D !important; color: white !important; border: 1px solid #9a7d43 !important; }
-					    .saic-button { cursor: pointer; transition: 0.3s; padding: 8px 15px; border-radius: 5px; border: 1px solid #ccc; background: #fff; }
-					</style>
-					
-					<div class="saic-wrapper">
-					    <div class="saic-wrapper saic-default saic-border saic-full " style="overflow: hidden;">
-					        <div id="saic-wrap-comment-6854" class="saic-wrap-comments" style="display: block;" data-id="6854">
-					            <div id="saic-wrap-form-6854" class="saic-wrap-form saic-clearfix">
-					                <div id="saic-container-form-6854" class="saic-container-form">
-					                    <div id="respond-6854" class="respond saic-clearfix">
-					                        
-					                        <form id="commentform-6854">
-					                            <p class="comment-form-author saic-field-1">
-					                                <input type="text" name="author" id="author" class="saic-input" placeholder="Nama" value="" required />
-					                                <span class="saic-required">*</span>
-					                            </p>
-					
-					                            <div class="saic-wrap-textarea">
-					                                <textarea name="comment" id="saic-textarea-6854" class="waci_comment saic-textarea autosize-textarea" placeholder="Ucapan" rows="3" required></textarea>
-					                                <span class="saic-required">*</span>
-					                            </div>
-					
-					                            <div class="saic-wrap-container-attendance">
-					                                <div class="saic-attendance">
-					                                    <hr class="saic-line-attendance">
-					                                    <p class="saic-text-attendance">Konfirmasi Kehadiran</p>
-					                                    <hr class="saic-line-attendance">
-					                                </div>
-					                                <div class="saic-wrap-attendance">
-					                                    <div class="saic-buttons" id="attendance-buttons">
-					                                        <button type="button" data-value="Hadir" class="saic-button btn-att">
-					                                            <i aria-hidden="true" class="fas fa-check-circle"></i> Hadir
-					                                        </button>
-					                                        <button type="button" data-value="Tidak Hadir" class="saic-button btn-att">
-					                                            <i aria-hidden="true" class="fas fa-times-circle"></i> Tidak Hadir
-					                                        </button>
-					                                    </div>
-					                                    <input type="hidden" name="attendance" id="attendance_val" value="">
-					                                    <span class="saic-required">*</span>
-					                                </div>
-					                            </div>
-					
-					                            <div class="saic-wrap-guest" id="guest-wrapper" style="margin-top: 15px;">
-					                                <div class="guest-count"><i class="fas fa-user"></i>
-					                                    <p class="text-guest-count">Jumlah Tamu</p>
-					                                </div>
-					                                <select name="guest" id="guest" class="saic-select" style="width: 100%; padding: 8px;">
-					                                    <option value='1' selected>1 Orang</option>
-					                                    <option value='2'>2 Orang</option>
-					                                </select>
-					                            </div>
-					
-					                            <div class="saic-wrap-submit saic-clearfix" style="margin-top: 20px;">
-					                                <button type="button" id="btn-kirim-firebase" style="width:100%; padding:12px; background:#C5A25D; color:white; border:none; border-radius:8px; font-weight:bold; cursor:pointer;">
-					                                    Kirim Pesan
-					                                </button>
-					                            </div>
-					                        </form>
-					                    </div>
-					                </div>
-					            </div>
-					        </div>
-					        <div id="saic-container-comment-6854" class="saic-container-comments" style="padding: 20px;">
-					            </div>
-					    </div>
-					</div>
-					
+					<style>.saic-comment-content {margin-left: 0 !important;}.saic-comment-avatar {display: none !important;}</style><div class="saic-wrapper"><div class="saic-wrapper saic-default saic-border saic-full " style="overflow: hidden;">
+
+
+
+<div class="saic-wrap-link" style="display: none;">
+
+
+
+<a href="?post_id=6854&#038;comments=42&#038;get=500&#038;order=DESC" id="saic-link-6854" class="saic-link saic-icon-link saic-icon-link-true auto-load-true">
+
+<i class="saico-comment"></i>
+
+<span>42</span>
+
+Ucapan </a>
+
+
+
+</div>
+
+
+
+<div id="saic-wrap-comment-6854" class="saic-wrap-comments" style="display: none;" data-id="6854">
+
+
+
+<div id="saic-wrap-form-6854" class="saic-wrap-form saic-clearfix">
+
+
+
+<div id="saic-container-form-6854" class="saic-container-form">
+
+
+
+<div id="respond-6854" class="respond saic-clearfix">
+
+
+
+<form action="" method="POST" id="commentform-6854">
+
+
+
+
+<p class="comment-form-author saic-field-1">
+
+<input type="text" name="author" id="author" class="saic-input" aria-required="true" 
+
+placeholder="Nama" 
+
+value="" />
+
+<span class="saic-required">*</span>
+
+<span class="saic-error-info saic-error-info-name">Enter your name</span>
+
+</p>
+
+
+
+
+<div class="saic-wrap-textarea">
+
+<textarea name="comment" id="saic-textarea-6854" class="waci_comment saic-textarea autosize-textarea" aria-required="true" placeholder="Ucapan" rows="1"></textarea>
+
+<span class="saic-required">*</span>
+
+<span class="saic-error-info saic-error-info-text">minimal 2 karakter</span>
+
+</div>
+
+
+
+
+
+<div class="saic-wrap-container-attendance">
+
+<div class="saic-attendance">
+
+<hr class="saic-line-attendance">
+
+<p class="saic-text-attendance">Konfirmasi Kehadiran</p>
+
+<hr class="saic-line-attendance">
+
+</div>
+
+<div class="saic-wrap-attendance">
+
+<div class="saic-buttons">
+
+<button type="button" id="optChoose" value="notsure" class="saic-button" style="display: none" disabled>Tidak Konfirmasi</button>
+
+<button type="button" id="optPresent" value="present" class="saic-button"><i aria-hidden="true" class="fas fa-check-circle"></i> <span id="optPresentText">Hadir</span></button>
+
+<button type="button" id="optNotpresent" value="notpresent" class="saic-button"><i aria-hidden="true" class="fas fa-times-circle"></i> <span id="optNotpresentText">Tidak Hadir</button>
+
+</div>
+
+<input type="hidden" name="attendance" id="attendance" value="notsure">
+
+<span class="saic-required">*</span>
+
+<span class="saic-error-info saic-error-info-attendance">Pilih konfirmasi kehadiran</span>
+
+</div>
+
+</div>
+
+
+
+
+<div class="saic-wrap-guest" style="display: none;">
+
+<div class="guest-count"><i class="fas fa-user"></i>
+
+<p class="text-guest-count">Jumlah Tamu</p>
+
+</div>
+
+<select name="guest" id="guest" class="saic-select">
+
+<option value='1' selected>1 Orang</option><option value='2' >2 Orang</option> </select>
+
+
+
+<span class="saic-required">*</span>
+
+<span class="saic-error-info saic-error-info-guest">Pilih jumlah tamu</span>
+
+</div>
+
+
+
+<div class="saic-wrap-guest" style="display: none;">
+
+
+
+<div class="saic-wrap-submit saic-clearfix">
+
+<p class="form-submit">
+
+<input type='hidden' name='comment_post_ID' value='6854' id='comment_post_ID' />
+
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+
+<input type="hidden" name="commentpress" value="true" />
+
+<button type="button" id="btn-kirim-firebase" style="width:100%; padding:12px; background:#C5A25D; color:white; border:none; border-radius:8px; font-weight:bold; cursor:pointer;">Kirim Pesan</button>
+
+</p>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="saic-comment-status-6854" class="saic-comment-status"></div>
 					<script>
 					    // Logic untuk tombol kehadiran (Hadir / Tidak Hadir)
 					    document.querySelectorAll('.btn-att').forEach(button => {
