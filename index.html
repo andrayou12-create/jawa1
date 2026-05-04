@@ -208,8 +208,8 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script><link rel="icon" href="https://raw.githubusercontent.com/andrayou12-create/bernaungid1/main/assets.bernaung.id/loading-bernaung.jpeg" sizes="32x32" />
 <link rel="icon" href="https://raw.githubusercontent.com/andrayou12-create/bernaungid1/main/assets.bernaung.id/loading-bernaung.jpeg" sizes="192x192" />
-<link rel="apple-touch-icon" href="https://raw.githubusercontent.com/andrayou12-create/bernaungid1/main/assets.bernaung.id/loading-bernaung.jpeg" />
-<meta name="msapplication-TileImage" content="https://raw.githubusercontent.com/andrayou12-create/bernaungid1/main/assets.bernaung.id/loading-bernaung.jpeg" />
+<link rel="apple-touch-icon" href="https://raw.githubusercontent.com/andrayou12-create/jawa1/main/images/Foto%201.jpeg" />
+<meta name="msapplication-TileImage" content="https://raw.githubusercontent.com/andrayou12-create/jawa1/main/images/Foto%201.jpeg" />
 		<style id="wp-custom-css">
 			body{
 	margin: 0 auto;
@@ -399,7 +399,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				</div>
 				<div data-dce-title-color="#333333" class="elementor-element elementor-element-2cb4373 animated-slow elementor-invisible elementor-widget elementor-widget-heading" data-id="2cb4373" data-element_type="widget" data-e-type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:1400}" data-widget_type="heading.default">
 				<div class="elementor-widget-container">
-					<h2 class="elementor-heading-title elementor-size-default">Tamu Undangan</h2>				</div>
+					<h2 class="elementor-heading-title elementor-size-default" id="nama-tamu-undangan">Tamu Undangan</h2>				</div>
 				</div>
 				<div data-dce-title-color="#333333" class="elementor-element elementor-element-e754120 animated-slow elementor-invisible elementor-widget elementor-widget-heading" data-id="e754120" data-element_type="widget" data-e-type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:1800}" data-widget_type="heading.default">
 				<div class="elementor-widget-container">
@@ -1953,7 +1953,7 @@ value="" />
 			<div class="elementor-widget-wrap elementor-element-populated">
 						<div class="elementor-element elementor-element-0f864e4 elementor-widget__width-auto elementor-widget elementor-widget-image" data-id="0f864e4" data-element_type="widget" data-e-type="widget" data-widget_type="image.default">
 				<div class="elementor-widget-container">
-															<img loading="lazy" width="1995" height="2000" src="https://raw.githubusercontent.com/andrayou12-create/bernaungid1/main/assets.bernaung.id/loading-bernaung.jpeg" class="attachment-full size-full wp-image-327620" alt="" />															</div>
+															<img loading="lazy" width="1995" height="2000" src="https://raw.githubusercontent.com/andrayou12-create/jawa1/main/images/Foto%201.jpeg" class="attachment-full size-full wp-image-327620" alt="" />															</div>
 				</div>
 				<div data-dce-title-color="#FFFFFF" class="elementor-element elementor-element-2bb9a84 elementor-widget__width-auto elementor-widget elementor-widget-heading" data-id="2bb9a84" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
 				<div class="elementor-widget-container">
@@ -2917,6 +2917,22 @@ function muatUcapan() {
     })
     .catch(err => console.log("Gagal memuat rekap."));
 }
+</script>
+<script>
+    // Fungsi untuk mengambil nama dari URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const namaTamu = urlParams.get('to');
+
+    // Jika ada nama di URL, pasang ke elemen yang memiliki ID "nama-tamu-undangan"
+    if (namaTamu) {
+        document.addEventListener("DOMContentLoaded", function() {
+            const elemenNama = document.getElementById("nama-tamu-undangan");
+            if (elemenNama) {
+                // Mengganti tanda + atau %20 menjadi spasi agar rapi
+                elemenNama.innerText = namaTamu.replace(/\+/g, ' ');
+            }
+        });
+    }
 </script>
 <style>
 /* Mematikan Loading yang macet di gambar image_5613a8.jpg */
