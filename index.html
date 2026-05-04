@@ -1767,6 +1767,50 @@ value="" />
 </style>
 </div>				</div>
 				</div>
+				<!-- Container untuk Bank Ucapan -->
+<div id="bank-ucapan-container" style="margin-top: 30px; padding: 20px; background: #E1D5C5ED; border-radius: 10px;">
+    <h3 style="text-align: center; font-family: 'Playball', cursive; margin-bottom: 20px;">Doa & Ucapan Tamu</h3>
+    <div id="daftar-ucapan" style="max-height: 400px; overflow-y: auto;">
+        <p style="text-align: center;">Memuat ucapan...</p>
+    </div>
+</div>
+
+<script>
+async function ambilUcapan() {
+    // GANTI LINK DI BAWAH INI DENGAN LINK PUBLISH TO WEB (.CSV) ANDA
+    const url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQsOw9c-pyCRgQe-KY45KcSJnrjuKFSgVGCHzaC8-RzuOgqLIymuypcJXGAmHuq5NKGer7JUw1iipMD/pub?output=csv';
+    
+    try {
+        const response = await fetch(url);
+        const data = await response.text();
+        const rows = data.split('\n').slice(1); // Lewati header spreadsheet
+        
+        let htmlKonten = '';
+        rows.forEach(row => {
+            const columns = row.split(',');
+            if (columns.length >= 2) {
+                const nama = columns[0]; // Kolom A: Nama
+                const pesan = columns[1]; // Kolom B: Ucapan
+                
+                htmlKonten += `
+                    <div style="border-bottom: 1px solid #ccc; padding: 10px 0;">
+                        <strong style="display: block; color: #5A0000;">${nama}</strong>
+                        <p style="margin: 5px 0; font-style: italic;">"${pesan}"</p>
+                    </div>
+                `;
+            }
+        });
+        
+        document.getElementById('daftar-ucapan').innerHTML = htmlKonten || '<p>Belum ada ucapan.</p>';
+    } catch (error) {
+        console.error('Gagal memuat ucapan:', error);
+        document.getElementById('daftar-ucapan').innerHTML = '<p>Gagal memuat ucapan.</p>';
+    }
+}
+
+// Jalankan fungsi saat halaman dimuat
+window.addEventListener('DOMContentLoaded', ambilUcapan);
+</script>
 				<div class="elementor-element elementor-element-07e7b4e elementor-widget__width-auto elementor-absolute animated-slow inv-kiri elementor-invisible elementor-widget elementor-widget-image" data-id="07e7b4e" data-element_type="widget" data-e-type="widget" data-settings="{&quot;_position&quot;:&quot;absolute&quot;,&quot;_animation&quot;:&quot;rotateInDownLeft&quot;,&quot;_animation_delay&quot;:500}" data-widget_type="image.default">
 				<div class="elementor-widget-container">
 															<img fetchpriority="high" width="382" height="564" src="https://the.invisimple.id/wp-content/uploads/2026/03/BUNGA.png" class="attachment-full size-full wp-image-534618" alt="" />															</div>
