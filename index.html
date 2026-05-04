@@ -1084,7 +1084,7 @@ Banjarsari RT03/RW01, Kebumen, Pringsurat, Temanggung</p>				</div>
     <div class="jet-timeline-item jet-timeline-item--animated elementor-repeater-item-custom-4 jet-timeline-item--image-inside">
         <div class="timeline-item__card">
             <div class="timeline-item__card-inner">
-                <div class="timeline-item__card-img"><img width="1000" height="667" src="https://raw.githubusercontent.com/andrayou12-create/jawa1/main/images/Foto%208.jpeg" class="attachment-full size-full" alt="" /></div>
+                <div class="timeline-item__card-img"><img width="1000" height="667" src="https://raw.githubusercontent.com/andrayou12-create/jawa1/main/images/Foto%2010.jpeg" class="attachment-full size-full" alt="" /></div>
                 <div class="timeline-item__card-content">
                     <h5 class="timeline-item__card-title">Pernikahan</h5>
                     <div class="timeline-item__card-desc">Percayalah, bukan karena bertemu kami berjodoh, tapi karena berjodohlah kami dipertemukan...</div>
@@ -1350,7 +1350,7 @@ Dan jika memberi adalah ungkapan tanda kasih, Anda dapat memberi melalui dibawah
 			<div class="elementor-widget-wrap elementor-element-populated">
 						<div data-dce-advanced-background-color="#FFFFFF" class="elementor-element elementor-element-5a6da4b elementor-widget__width-auto ha-has-bg-overlay elementor-widget elementor-widget-image" data-id="5a6da4b" data-element_type="widget" data-e-type="widget" data-widget_type="image.default">
 				<div class="elementor-widget-container">
-															<img loading="lazy" width="153" height="50" src="https://raw.githubusercontent.com/andrayou12-create/jawa1/main/Seabank.png" class="attachment-full size-full wp-image-6268" alt="" srcset="https://raw.githubusercontent.com/andrayou12-create/jawa1/main/Seabank.png 153w, https://raw.githubusercontent.com/andrayou12-create/jawa1/main/Seabank.png 150w" sizes="(max-width: 153px) 100vw, 153px" />															</div>
+															<img loading="lazy" width="153" height="50" src="https://raw.githubusercontent.com/andrayou12-create/jawa1/main/SeaBankank.png" class="attachment-full size-full wp-image-6268" alt="" srcset="https://raw.githubusercontent.com/andrayou12-create/jawa1/main/SeaBankank.png 153w, https://raw.githubusercontent.com/andrayou12-create/jawa1/main/SeaBankank.png 150w" sizes="(max-width: 153px) 100vw, 153px" />															</div>
 				</div>
 				<div data-dce-title-color="#FFFFFF" class="elementor-element elementor-element-3525c24 content elementor-widget elementor-widget-heading" data-id="3525c24" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
 				<div class="elementor-widget-container">
@@ -1882,7 +1882,7 @@ value="" />
 											</a>
 									</li>
 								<li class="elementor-icon-list-item elementor-inline-item">
-											<a href="https://api.whatsapp.com/send/?phone=6281804787601&#038;text=Halo,+saya+ingin+tanya+mengenai+Undangan+Website,+saya+mendapatkan+WA+dari+undangan+yang+telah+disebar." target="_blank" rel="nofollow">
+											<a href="https://api.whatsapp.com/send/?phone=6282324137816&#038;text=Halo,+saya+ingin+tanya+mengenai+Undangan+Website,+saya+mendapatkan+WA+dari+undangan+yang+telah+disebar." target="_blank" rel="nofollow">
 
 												<span class="elementor-icon-list-icon">
 							<i aria-hidden="true" class="fab fa-whatsapp"></i>						</span>
@@ -2753,44 +2753,41 @@ const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(
 //# sourceURL=https://envitto.invisimple.id/wp-includes/js/wp-emoji-loader.min.js
 </script>
 	<script>
-document.getElementById('btn-kirim-firebase').addEventListener('click', function(e) {
-    e.preventDefault();
+const scriptURL = 'https://script.google.com/macros/s/AKfycbziGMnQ9yAqzilKK5YhDML7OC9Gu7skkKlmVdee3V0BO0meoNHR9PSQy55LzcZYY9NZCA/exec';
 
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbziGMnQ9yAqzilKK5YhDML7OC9Gu7skkKlmVdee3V0BO0meoNHR9PSQy55LzcZYY9NZCA/exec'; // Ganti dengan URL dari Langkah 1
-    const nama = document.querySelector('[name="author"]')?.value;
-    const pesan = document.querySelector('[name="comment"]')?.value;
-    const jumlah = document.querySelector('[name="guest"]')?.value || "1";
+function muatUcapan() {
+    const container = document.querySelector('.saic-holder-6854');
+    if (!container) return;
 
-    if (!nama || !pesan) {
-        alert("Mohon isi Nama dan Pesan Anda");
-        return;
-    }
-
-    // Ubah teks tombol saat mengirim
-    const btn = this;
-    btn.innerText = "Mengirim...";
-    btn.disabled = true;
-
-    fetch(scriptURL, {
-        method: 'POST',
-        body: JSON.stringify({
-            "nama": nama,
-            "pesan": pesan,
-            "jumlah": jumlah
-        }),
+    fetch(scriptURL)
+    .then(response => response.json())
+    .then(data => {
+        container.innerHTML = ""; // Bersihkan loading
+        if (data.length > 0) {
+            data.forEach(item => {
+                const div = document.createElement('div');
+                div.style = "background: #f9f9f9; padding: 15px; border-radius: 10px; margin-bottom: 15px; border-left: 5px solid #C5A25D; text-align: left;";
+                div.innerHTML = `
+                    <div style="display: flex; justify-content: space-between;">
+                        <strong style="color: #333;">${item.nama}</strong>
+                        <span style="font-size: 0.8em; color: #777;">${item.jumlah} Orang</span>
+                    </div>
+                    <p style="margin: 8px 0 0; color: #555;">${item.pesan}</p>
+                `;
+                container.appendChild(div);
+            });
+        } else {
+            container.innerHTML = "<p style='text-align:center;'>Belum ada ucapan.</p>";
+        }
     })
-    .then(response => {
-        alert("Ucapan berhasil tersimpan di Spreadsheet!");
-        btn.innerText = "Kirim Ucapan";
-        btn.disabled = false;
-        document.querySelector('[name="comment"]').value = "";
-    })
-    .catch(error => {
-        console.error('Error!', error.message);
-        alert("Gagal mengirim ucapan.");
-        btn.disabled = false;
-    });
-});
+    .catch(error => console.error('Error saat memuat data:', error));
+}
+
+// Panggil fungsi saat halaman pertama kali dibuka
+muatUcapan();
+
+// Tambahkan pemanggilan muatUcapan() di dalam fungsi .then() pada tombol kirim 
+// agar daftar langsung terupdate setelah tamu klik kirim.
 </script>
 	<style id="e-addons-template-dynamic-f864b3a-inline">.elementor:is(.e-post-538931,.e-loop-item-538931) .elementor-element.elementor-element-f864b3a:not(.elementor-motion-effects-element-type-background) > .elementor-widget-wrap, .elementor:is(.e-post-538931,.e-loop-item-538931) .elementor-element.elementor-element-f864b3a > .elementor-widget-wrap > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-image: url("https://raw.githubusercontent.com/andrayou12-create/jawa1/main/images/Foto%201.jpeg");--e-bg-lazyload:url("https://raw.githubusercontent.com/andrayou12-create/jawa1/main/images/Foto%201.jpeg");background-position: center center;background-size: cover;}</style><style id="e-addons-template-dynamic-8211d57-inline">.elementor:is(.e-post-538931,.e-loop-item-538931) .elementor-element.elementor-element-8211d57:not(.elementor-motion-effects-element-type-background), .elementor:is(.e-post-538931,.e-loop-item-538931) .elementor-element.elementor-element-8211d57 > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-image: url("https://raw.githubusercontent.com/andrayou12-create/jawa1/main/images/Foto%201.jpeg");--e-bg-lazyload:url("https://raw.githubusercontent.com/andrayou12-create/jawa1/main/images/Foto%201.jpeg");background-position: center center;background-size: cover;}</style>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"8c176fcb44334ee084dc23a91c928a72","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
