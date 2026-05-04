@@ -988,14 +988,6 @@ Banjarsari RT03/RW01, Kebumen, Pringsurat, Temanggung</p>				</div>
 		</div>
 					</div>
 		</section>
-		<style>
-/* Tambahkan di sini */
-.saico-loading { display: none !important; }
-/* Ganti .class-bagian-anda dengan class asli dari section tersebut */
-.class-dresscode, .class-livestream {
-    display: none !important;
-}
-</style>
 
 				<section class="elementor-section elementor-inner-section elementor-element elementor-element-e232a02 elementor-section-full_width elementor-section-content-middle wdsdv-enabled--yes elementor-section-height-default elementor-section-height-default" data-id="e232a02" data-element_type="section" data-e-type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;jet_parallax_layout_list&quot;:[]}">
 						<div class="elementor-container elementor-column-gap-no">
@@ -1359,7 +1351,7 @@ Dan jika memberi adalah ungkapan tanda kasih, Anda dapat memberi melalui dibawah
 			<div class="elementor-widget-wrap elementor-element-populated">
 						<div data-dce-advanced-background-color="#FFFFFF" class="elementor-element elementor-element-5a6da4b elementor-widget__width-auto ha-has-bg-overlay elementor-widget elementor-widget-image" data-id="5a6da4b" data-element_type="widget" data-e-type="widget" data-widget_type="image.default">
 				<div class="elementor-widget-container">
-															<img loading="lazy" width="153" height="50" src="https://raw.githubusercontent.com/andrayou12-create/jawa1/main/SeaBankank.png" class="attachment-full size-full wp-image-6268" alt="" srcset="https://raw.githubusercontent.com/andrayou12-create/jawa1/main/SeaBankank.png 153w, https://raw.githubusercontent.com/andrayou12-create/jawa1/main/SeaBankank.png 150w" sizes="(max-width: 153px) 100vw, 153px" />															</div>
+															<img loading="lazy" width="153" height="50" src="https://raw.githubusercontent.com/andrayou12-create/jawa1/f12b91ef67a3b64c960a58bc28d5382940e7a749/SeaBank.png" class="attachment-full size-full wp-image-6268" alt="" srcset="https://raw.githubusercontent.com/andrayou12-create/jawa1/f12b91ef67a3b64c960a58bc28d5382940e7a749/SeaBank.png 153w, https://raw.githubusercontent.com/andrayou12-create/jawa1/f12b91ef67a3b64c960a58bc28d5382940e7a749/SeaBank.png 150w" sizes="(max-width: 153px) 100vw, 153px" />															</div>
 				</div>
 				<div data-dce-title-color="#FFFFFF" class="elementor-element elementor-element-3525c24 content elementor-widget elementor-widget-heading" data-id="3525c24" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
 				<div class="elementor-widget-container">
@@ -2784,47 +2776,97 @@ const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(
 //# sourceURL=https://envitto.invisimple.id/wp-includes/js/wp-emoji-loader.min.js
 </script>
 	<script>
-const scriptURL = 'https://script.google.com/macros/s/AKfycbziGMnQ9yAqzilKK5YhDML7OC9Gu7skkKlmVdee3V0BO0meoNHR9PSQy55LzcZYY9NZCA/exec'; // Pastikan URL Spreadsheet Anda benar
+// 1. Pastikan URL Web App sudah benar (hasil Deploy dari Google Sheets)
+const scriptURL = 'https://script.google.com/macros/s/AKfycbziGMnQ9yAqzilKK5YhDML7OC9Gu7skkKlmVdee3V0BO0meoNHR9PSQy55LzcZYY9NZCA/exec'; 
+
+document.addEventListener('DOMContentLoaded', function() {
+    const btnKirim = document.getElementById('btn-kirim-firebase');
+    
+    if (btnKirim) {
+        btnKirim.addEventListener('click', function(e) {
+            e.preventDefault(); // Mencegah reload halaman
+            
+            const nama = document.querySelector('[name="author"]')?.value;
+            const pesan = document.querySelector('[name="comment"]')?.value;
+            const jumlah = document.querySelector('[name="guest"]')?.value || "1";
+
+            if (!nama || !pesan) {
+                alert("Mohon isi Nama dan Pesan Anda");
+                return;
+            }
+
+            // Ubah tampilan tombol saat proses
+            btnKirim.innerText = "Mengirim...";
+            btnKirim.disabled = true;
+
+            fetch(scriptURL, {
+                method: 'POST',
+                body: JSON.stringify({ "nama": nama, "pesan": pesan, "jumlah": jumlah }),
+            })
+            .then(response => {
+                alert("Ucapan berhasil tersimpan!");
+                btnKirim.innerText = "Kirim Pesan";
+                btnKirim.disabled = false;
+                document.querySelector('[name="comment"]').value = ""; // Kosongkan form
+                muatUcapan(); // Refresh daftar rekapan di bawahnya
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+                alert("Gagal mengirim. Pastikan Apps Script sudah di-Deploy sebagai 'Anyone'.");
+                btnKirim.disabled = false;
+                btnKirim.innerText = "Kirim Pesan";
+            });
+        });
+    }
+    
+    // Jalankan fungsi muat ucapan saat halaman terbuka
+    muatUcapan();
+});
 
 function muatUcapan() {
     const container = document.querySelector('.saic-holder-6854');
     if (!container) return;
 
-    // Bersihkan isi kontainer sepenuhnya untuk menghilangkan jejak JS lama
-    container.innerHTML = "<p style='text-align:center; color:#777; font-size: 0.9em;'>Memuat ucapan tamu...</p>";
-
     fetch(scriptURL)
     .then(res => res.json())
     .then(data => {
-        container.innerHTML = ""; // Kosongkan lagi sebelum isi data baru
+        container.innerHTML = ""; // Bersihkan kontainer dari "loading" lama
         
-        if (data.length > 0) {
+        if (data && data.length > 0) {
             data.forEach(item => {
-                const card = document.createElement('div');
-                // Desain kartu ucapan baru yang lebih bersih
-                card.style = "background: rgba(255,255,255,0.8); padding: 12px; border-radius: 8px; margin-bottom: 10px; border: 1px solid #ddd; text-align: left; font-family: sans-serif;";
-                
-                card.innerHTML = `
-                    <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #eee; pb: 5px; mb: 5px;">
-                        <strong style="color: #b24b4b;">${item.nama}</strong>
-                        <small style="color: #666;">${item.jumlah} Orang</small>
-                    </div>
-                    <p style="margin: 5px 0 0; color: #333; font-size: 0.95em; line-height: 1.4;">${item.pesan}</p>
-                `;
-                container.appendChild(card);
+                const html = `
+                    <div style="background: #f9f9f9; padding: 15px; border-radius: 10px; margin-bottom: 10px; border-left: 5px solid #b24b4b; text-align: left;">
+                        <strong>${item.nama}</strong> <small style="color:#777;">— ${item.jumlah} Orang</small>
+                        <p style="margin-top:5px; color:#444;">${item.pesan}</p>
+                    </div>`;
+                container.insertAdjacentHTML('beforeend', html);
             });
         } else {
-            container.innerHTML = "<p style='text-align:center;'>Belum ada ucapan.</p>";
+            container.innerHTML = "<p style='text-align:center;'>Belum ada ucapan tamu.</p>";
         }
     })
-    .catch(err => {
-        container.innerHTML = "<p style='text-align:center; color:red;'>Gagal memuat data.</p>";
-    });
+    .catch(err => console.log("Gagal memuat rekap."));
+}
+</script>
+<style>
+/* Menyembunyikan Sesi Dresscode & Live Streaming secara paksa */
+.elementor-element-791ea70, /* Sesuaikan ID ini dengan ID section Dresscode Anda */
+.inv-dresscode, 
+.inv-livestream,
+#section-livestream {
+    display: none !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
 }
 
-// Jalankan fungsi
-muatUcapan();
-</script>
+/* Mematikan Loading yang macet di gambar image_5613a8.jpg */
+.saico-loading, 
+#saic-comment-status-6854 {
+    display: none !important;
+}
+</style>
 	<style id="e-addons-template-dynamic-f864b3a-inline">.elementor:is(.e-post-538931,.e-loop-item-538931) .elementor-element.elementor-element-f864b3a:not(.elementor-motion-effects-element-type-background) > .elementor-widget-wrap, .elementor:is(.e-post-538931,.e-loop-item-538931) .elementor-element.elementor-element-f864b3a > .elementor-widget-wrap > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-image: url("https://raw.githubusercontent.com/andrayou12-create/jawa1/main/images/Foto%201.jpeg");--e-bg-lazyload:url("https://raw.githubusercontent.com/andrayou12-create/jawa1/main/images/Foto%201.jpeg");background-position: center center;background-size: cover;}</style><style id="e-addons-template-dynamic-8211d57-inline">.elementor:is(.e-post-538931,.e-loop-item-538931) .elementor-element.elementor-element-8211d57:not(.elementor-motion-effects-element-type-background), .elementor:is(.e-post-538931,.e-loop-item-538931) .elementor-element.elementor-element-8211d57 > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-image: url("https://raw.githubusercontent.com/andrayou12-create/jawa1/main/images/Foto%201.jpeg");--e-bg-lazyload:url("https://raw.githubusercontent.com/andrayou12-create/jawa1/main/images/Foto%201.jpeg");background-position: center center;background-size: cover;}</style>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"8c176fcb44334ee084dc23a91c928a72","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
